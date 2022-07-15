@@ -26,5 +26,10 @@ API_SECRET=
 GROUP_ID=
 ```
 
-# Run the script
+## Run the script
 - `python create_cc.py`
+
+## Learn more about Connect Cards and Powered by Fivetran
+- [Fivetran Connect Cards](https://fivetran.com/docs/rest-api/connectors/connect-card)
+- [Powered by Fivetran QuickStart](https://fivetran.com/docs/getting-started/powered-by-fivetran)
+
