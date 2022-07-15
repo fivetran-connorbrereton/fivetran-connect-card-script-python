@@ -54,16 +54,12 @@ failure = '\033[91m'
 # Create the shell connector
 print(f"{cyan}Creating a Connector...{endc}")
 
-while True:
-    time.sleep(5) # five second retry delay
-    try:
-        response = requests.post(base_url + 'connectors', auth=auth, json=payload).json()
-        if "TooManyRequests" in response['code']:
-            print(f"{failure}Error{endc}\n")
-            raise SystemExit(json.dumps(response, indent=2))
-        break
-    except requests.exceptions.RequestException as error:
-        print(error)
+try:
+    response = requests.post(base_url + 'connectors', auth=auth, json=payload).json()
+    connector_id = response['data']['id']
+except:
+    print(f"{failure}Error{endc}\n")
+    raise SystemExit(json.dumps(response, indent=2))
 
 # Parse out the the connector_id
 connector_id = response['data']['id']
