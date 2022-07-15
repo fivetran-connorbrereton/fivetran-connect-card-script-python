@@ -59,9 +59,8 @@ while True:
     try:
         response = requests.post(base_url + 'connectors', auth=auth, json=payload).json()
         if "TooManyRequests" in response['code']:
-            print(f"{failure}Failure{endc}\n")
-            raise SystemExit(response['message'])
-            print("\n")
+            print(f"{failure}Error{endc}\n")
+            raise SystemExit(json.dumps(response, indent=2))
         break
     except requests.exceptions.RequestException as error:
         print(error)
