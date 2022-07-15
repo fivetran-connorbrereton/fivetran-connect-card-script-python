@@ -1,0 +1,4 @@
+django-environ
+requests
+pyyaml
+random-word
