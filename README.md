@@ -19,7 +19,7 @@ We're going to setup a really simple script that will generate a [Connect Card](
 - Install requirements: `pip install -r requirements.txt`
 
 ## Create .env file
-- Create a `.env` file in the root of the project and add your key, secret, destination group id in the below format:
+Create a `.env` file in the root of the project and add your key, secret, destination group id in the below format:
 ```
 API_KEY=
 API_SECRET=
@@ -27,7 +27,7 @@ GROUP_ID=
 ```
 
 ## Run the script
-- `python create_cc.py`
+`python create_cc.py`
 
 ## Learn more about Connect Cards and Powered by Fivetran
 - [Fivetran Connect Cards](https://fivetran.com/docs/rest-api/connectors/connect-card)
