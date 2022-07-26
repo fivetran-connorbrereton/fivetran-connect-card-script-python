@@ -30,8 +30,13 @@ connector_type = 'google_analytics'
 
 ## Random words for schema id
 r = RandomWords()
-schemaId = r.get_random_word() + '_' + r.get_random_word()
+schemaId = str(r.get_random_word()) + '_' + str(r.get_random_word())
 # End config
+
+# STDOUT colors
+cyan = '\033[96m'
+endc = '\033[0m'
+failure = '\033[91m'
 
 base_url = 'https://api.fivetran.com/v1/'
 
@@ -45,11 +50,6 @@ payload = {
         "schema": schemaId
     }
 }
-
-# STDOUT colors
-cyan = '\033[96m'
-endc = '\033[0m'
-failure = '\033[91m'
 
 # Create the shell connector
 print(f"{cyan}Creating a Connector...{endc}")
