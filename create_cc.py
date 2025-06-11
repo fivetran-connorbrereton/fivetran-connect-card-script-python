@@ -40,7 +40,7 @@ failure = '\033[91m'
 
 base_url = 'https://api.fivetran.com/v1/'
 
-# Connector Config Payload: https://fivetran.com/docs/rest-api/connectors/config
+# Connector Config Payload: https://fivetran.com/docs/rest-api/api-reference/connections/create-connection
 payload = {
     "service": connector_type,
     "group_id": GROUP_ID,
@@ -58,7 +58,7 @@ payload = {
 print(f"{cyan}Creating a Connector...{endc}")
 
 try:
-    response = requests.post(base_url + 'connectors', auth=auth, json=payload).json()
+    response = requests.post(base_url + 'connections', auth=auth, json=payload).json()
     connector_id = response['data']['id']
 except:
     print(f"{failure}Error{endc}\n")
