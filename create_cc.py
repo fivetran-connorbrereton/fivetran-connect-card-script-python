@@ -25,7 +25,7 @@ headers = {
 
 # Begin config
 GROUP_ID = env("GROUP_ID")
-connector_type = 'google_analytics'
+connector_type = 'google_analytics_4'
 # End config
 
 ## Random words for schema id
@@ -44,10 +44,13 @@ base_url = 'https://api.fivetran.com/v1/'
 payload = {
     "service": connector_type,
     "group_id": GROUP_ID,
-    "Paused": "true",
+    "Paused": "false",
     "run_setup_tests": False,
     "config": {
         "schema": schemaId
+    },
+    "connect_card_config": {
+        "redirect_uri": "https://news.ycombinator.com"
     }
 }
 
@@ -62,16 +65,8 @@ except:
     raise SystemExit(json.dumps(response, indent=2))
 
 # Parse out the the connector_id
-connector_id = response['data']['id']
-
-# Create the connect card token
-print(f"{cyan}Creating a Connect Card Token...{endc}\n")
-response_token = requests.post(base_url + 'connectors/' + connector_id + 
-    '/' + 'connect-card-token', auth=auth, json=payload).json()
-
-# Parse out the connectors token
-token = response_token['token']
+connector_card_url = response['data']['connect_card']['uri']
 
 # Generate the connect card link
 print(f"{cyan}All done! Get your URL below:{endc}")
-print('https://fivetran.com/connect-card/setup?redirect_uri=fivetran.com&auth=' + token)
+print(f"{connector_card_url}")
